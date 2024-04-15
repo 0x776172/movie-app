@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Movie App</title>
+{% endblock title %}
+
+{% block content %}
+    {% if movie_list %}
+    <input class="form-control me-2" id="input-search" type="search" placeholder="Search movies..." aria-label="Search" style="width: 15rem">
+    <h2>Popular Movies this month</h2>
+    <div class="row" id="movies-list">
+        
+            {% include "home/home_search.html" with movie=movie_list %}
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script>
+        $("#input-search").keyup(function(){
+            $.ajax({
+                url: "{% url 'filter' %}",
+                method: 'GET',
+                data : {
+                        name: $(this).val()
+                },
+                success: function(data){
+                    $('#movies-list').html(data)
+                    console.log("ini")
+                    console.log(data)
+                },
+                error: function(xhr, errmsg, err){
+                    console.log("error")
+                    console.log(err)
+                }
+           });
+        })
+        $('#test').click(function(){
+            $.ajax({
+                url: "{% url 'filter' %}",
+                method: 'GET',
+                data : {
+                        name: 13
+                },
+                success: function(data){
+                    $('#movies-list').html(data)
+                    console.log("ini")
+                    console.log(data)
+                },
+                error: function(xhr, errmsg, err){
+                    console.log("error")
+                    console.log(err)
+                }
+           });
+        })
+        
+    </script>
+{% endblock script %}
+

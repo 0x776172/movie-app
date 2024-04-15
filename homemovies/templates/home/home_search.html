@@ -1,0 +1,13 @@
+{% for movie in movie_list %}
+    <a class="card m-1" style="width: 20rem;" href="{% url 'detail' movie.id %}">
+        <div>
+            {% load static %}
+            <img class="card-img-tops" src={% static movie.imgpath%} alt="Movies Poster">
+            <div class="card-body">
+                <h5 class="card-title">{{movie.name}}</h5>
+                <p class="card-text" disabled>{{movie.duration}} min</p>
+                <p class="card-text">User Rating: {{movie.userrating}}</p>
+            </div>
+        </div>
+    </a>
+{% endfor %}

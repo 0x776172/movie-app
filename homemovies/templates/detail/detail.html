@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title> {{movie.name}} </title>
+{% endblock title %}
+
+{% block content %}
+    <a href="{% url 'index' %}">
+        <button>Back</button>
+    </a>
+    <h2>{{ movie.name }} </h2>
+    <p>({{ type }}: {{ label }})</p>
+    <div class="card mb-3" style="max-width: 1000px;">
+        <div class="row g-0">
+        <div class="col-md-4">
+            {% load static %}
+            <img src={% static movie.imgpath%} class="img-fluid rounded-start" alt="Picture" style="height: fit-content">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Details</h5>
+                <p class="card-text">Genre: {{ genre }}</p>
+                <p class="card-text">Language: {{ movie.language }}</p>
+                <p class="card-text">Duration: {{ movie.duration }} minutes</p>
+                <p class="card-text">User Rating: {{ movie.userrating }}</p>
+                <h5 class="card-title">Synopsis</h5>
+                <p class="card-text">{{ movie.description }}</p>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock content %}

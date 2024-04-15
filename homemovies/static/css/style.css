@@ -1,0 +1,24 @@
+.main {
+    background-color: aqua;
+}
+.card-img-tops {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+}
+
+.card:hover {
+    cursor: default;
+}
+
+p {
+    width: fit-content;
+}
+
+.card-text::selection {
+    background-color: transparent;
+}
+
+.card-title::selection {
+    background-color: transparent;
+}
